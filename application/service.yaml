@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  namespace: demo
+  labels:
+    name: app
+spec:
+  ports:
+    - port: 8080
+      targetPort: m-http
+      protocol: TCP
+      name: m-http
+  selector:
+    name: app

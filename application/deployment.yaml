@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: demo
+  labels:
+    name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: app
+  template:
+    metadata:
+      labels:
+        name: app
+    spec:
+      containers:
+      - name: app
+        image: anaisurlichs/ping-pong:initial
+        ports:
+        - name: m-http
+          containerPort: 8080
+          protocol: TCP
