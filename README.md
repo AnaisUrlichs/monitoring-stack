@@ -14,7 +14,6 @@ The presentation for the other demo is linked [here](https://youtu.be/Z8hfs_CN1E
 Create a new namespace
 ```
 kubectl create ns demo
-
 ```
 
 Install monitoring stack
@@ -58,3 +57,15 @@ kubectl port-forward service/prom-grafana -n demo 3000:8080
 ```
 
 http://localhost:3000/
+
+### Install Promtail and Loki
+
+Promtail
+```
+helm upgrade --install promtail grafana/promtail -f monitoring/promtail-values.yaml -n monitoring
+```
+
+Loki 
+```
+helm upgrade --install loki grafana/loki-distributed -n monitoring
+```
